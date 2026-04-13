@@ -356,34 +356,37 @@ const people = [
 
 const table = document.querySelector('.dashboard');
 
-people.forEach((person) => {
-  const row = document.createElement('tr');
+if (table) {
+  const tableBody = table.querySelector('tbody') || table;
 
-  const cellName = document.createElement('td');
+  people.forEach((person) => {
+    const row = document.createElement('tr');
 
-  cellName.textContent = person.name;
+    const cellName = document.createElement('td');
 
-  const cellGender = document.createElement('td');
+    cellName.textContent = person.name;
 
-  cellGender.textContent = person.sex;
+    const cellGender = document.createElement('td');
 
-  const cellBorn = document.createElement('td');
+    cellGender.textContent = person.sex === 'm' ? 'Male' : 'Female';
 
-  cellBorn.textContent = person.born;
+    const cellBorn = document.createElement('td');
 
-  const cellDied = document.createElement('td');
+    cellBorn.textContent = person.born;
 
-  cellDied.textContent = person.died;
+    const cellDied = document.createElement('td');
 
-  const cellAge = document.createElement('td');
+    cellDied.textContent = person.died;
 
-  cellAge.textContent = person.died - person.born;
+    const cellAge = document.createElement('td');
 
-  const cellCentury = document.createElement('td');
+    cellAge.textContent = person.died - person.born;
 
-  cellCentury.textContent = Math.ceil(person.died / 100);
+    const cellCentury = document.createElement('td');
 
-  row.append(cellName, cellGender, cellBorn, cellDied, cellAge, cellCentury);
+    cellCentury.textContent = Math.ceil(person.died / 100);
 
-  table.append(row);
-});
+    row.append(cellName, cellGender, cellBorn, cellDied, cellAge, cellCentury);
+    tableBody.append(row);
+  });
+}
