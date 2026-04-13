@@ -362,28 +362,31 @@ const table = document.querySelector('.dashboard');
 people.forEach((person) => {
   const row = document.createElement('tr');
 
-  const selfName = document.createElement('td');
+  const cellName = document.createElement('td');
 
-  selfName.textContent = person.selfName;
+  cellName.textContent = person.name;
 
-  const gender = document.createElement('td');
+  const cellGender = document.createElement('td');
 
-  gender.textContent = person.sex;
+  cellGender.textContent = person.sex;
 
-  const born = document.createElement('td');
+  const cellBorn = document.createElement('td');
 
-  born.textContent = person.born;
+  cellBorn.textContent = person.born;
 
-  const died = document.createElement('td');
+  const cellDied = document.createElement('td');
 
-  died.textContent = person.died;
+  cellDied.textContent = person.died;
 
-  const age = document.createElement('td').append(person.died - person.born);
+  const cellAge = document.createElement('td');
 
-  const century = document
-    .createElement('td')
-    .append(Math.ceil(person.died / 100));
+  cellAge.textContent = person.died - person.born;
 
-  row.append(selfName, age, gender, born, died, age, century);
+  const cellCentury = document.createElement('td');
+
+  cellCentury.textContent = Math.ceil(person.died / 100);
+
+  row.append(cellName, cellGender, cellBorn, cellDied, cellAge, cellCentury);
+
   table.append(row);
 });
